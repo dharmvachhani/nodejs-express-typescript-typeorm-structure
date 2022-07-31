@@ -6,9 +6,7 @@ export class UserController {
 
     async all(request: Request, response: Response, next: NextFunction) {
         try {
-            const users = await UserRepository.findOneOrFail({where: {
-                id: 126
-            }})
+            const users = await UserRepository.find();
             response.json(users);
         } catch (error) {
             next(createHttpError(404, "Not Found"))
